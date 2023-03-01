@@ -20,6 +20,10 @@ export default class SearchBar extends Component {
 			}
 		);
 	};
+	handleOnSubmit = (e) => {
+		e.preventDefault();
+		this.props.handleFiltered();
+	};
 	render() {
 		return (
 			<div>

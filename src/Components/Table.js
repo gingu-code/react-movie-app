@@ -39,12 +39,12 @@ const TableBody = (props) => {
 class Table extends Component {
 	render() {
 		//read props passed in from App.js
-		const { filmsData } = this.props;
+		const { filmsData, filteredData } = this.props;
 
 		return (
 			<table>
 				<TableHeader />
-				<TableBody data={filmsData} />
+				<TableBody data={filteredData.length > 0 ? filteredData : filmsData} />
 			</table>
 		);
 	}

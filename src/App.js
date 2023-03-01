@@ -109,10 +109,14 @@ function App() {
 
 	const [searchInput, setSearchInput] = useState("");
 	const [searchField, setSearchField] = useState("title");
+	const [filteredData, setFilteredData] = useState([]);
 
-	const filteredMovies = movies.filter((movie) => {
-		return movie[searchField].includes(searchInput);
-	});
+	const handleFiltered = () => {
+		const filteredMovies = movies.filter((movie) => {
+			return movie[searchField].includes(searchInput);
+		});
+		setFilteredData(filteredMovies);
+	};
 
 	const [filmsData, setFilmsData] = useState(movies);
 	console.log(filmsData);
@@ -121,8 +125,9 @@ function App() {
 			<SearchBar
 				setSearchInput={setSearchInput}
 				setSearchField={setSearchField}
+				handleFiltered={handleFiltered}
 			/>
-			<Table filmsData={filteredMovies} />
+			<Table filmsData={filmsData} filteredData={filteredData} />
 		</div>
 	);
 }
