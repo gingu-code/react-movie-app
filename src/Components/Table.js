@@ -29,6 +29,15 @@ const TableBody = (props) => {
 				<td>{row.director}</td>
 				<td>{row.year}</td>
 				<td>{row.dateAdded}</td>
+				<td>
+					<button
+						onClick={() => {
+							props.handleDelete(index);
+						}}
+					>
+						delete
+					</button>
+				</td>
 			</tr>
 		);
 	});
@@ -39,12 +48,12 @@ const TableBody = (props) => {
 class Table extends Component {
 	render() {
 		//read props passed in from App.js
-		const { filmsData } = this.props;
+		const { filmsData, handleDelete } = this.props;
 
 		return (
 			<table>
 				<TableHeader />
-				<TableBody data={filmsData} />
+				<TableBody data={filmsData} handleDelete={handleDelete} />
 			</table>
 		);
 	}

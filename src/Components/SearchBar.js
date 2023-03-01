@@ -23,7 +23,7 @@ export default class SearchBar extends Component {
 	render() {
 		return (
 			<div>
-				<form onSubmit={this.handleOnSubmit}>
+				<form>
 					<label>Search:</label>
 					<input
 						name="input"
@@ -50,7 +50,6 @@ export default class SearchBar extends Component {
 						checked={this.state.field === "director"}
 					/>
 					<br />
-					<button>Search</button>
 				</form>
 			</div>
 		);

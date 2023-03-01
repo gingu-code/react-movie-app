@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Table from "./Components/Table";
 import SearchBar from "./Components/SearchBar";
@@ -109,20 +109,34 @@ function App() {
 
 	const [searchInput, setSearchInput] = useState("");
 	const [searchField, setSearchField] = useState("title");
-
-	const filteredMovies = movies.filter((movie) => {
-		return movie[searchField].includes(searchInput);
-	});
-
+	const [filteredData, setFilteredData] = useState(movies);
 	const [filmsData, setFilmsData] = useState(movies);
-	console.log(filmsData);
+
+	useEffect(() => {
+		const handleFiltered = () => {
+			const filteredMovies = filmsData.filter((movie) => {
+				const lowercased = movie[searchField].toLowerCase();
+				return lowercased.includes(searchInput.toLowerCase());
+			});
+			setFilteredData(filteredMovies);
+		};
+		handleFiltered();
+	}, [filmsData, searchInput, searchField]);
+
+	const handleDelete = (i) => {
+		const deleteMovie = filmsData.filter((m, index) => {
+			return i !== index;
+		});
+		setFilmsData(deleteMovie);
+	};
+
 	return (
 		<div className="App">
 			<SearchBar
 				setSearchInput={setSearchInput}
 				setSearchField={setSearchField}
 			/>
-			<Table filmsData={filteredMovies} />
+			<Table filmsData={filteredData} handleDelete={handleDelete} />
 		</div>
 	);
 }
