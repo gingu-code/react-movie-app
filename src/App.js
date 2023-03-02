@@ -142,6 +142,7 @@ function App() {
 				searchField={searchField}
 				setSearchInput={setSearchInput}
 				setSearchField={setSearchField}
+				handleFiltered={handleFiltered}
 			/>
 			<Table filmsData={filteredData} handleDelete={handleDelete} />
 			<MovieForm handleNewMovie={handleNewMovie} />
