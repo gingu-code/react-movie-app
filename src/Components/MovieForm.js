@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function MovieForm({ handleNewMovie }) {
 	const fields = {
@@ -19,6 +19,7 @@ export default function MovieForm({ handleNewMovie }) {
 	const handleOnSubmit = (e) => {
 		e.preventDefault();
 		inputValue.dateAdded = new Date().toISOString();
+
 		handleNewMovie(inputValue);
 		setInputValue(fields);
 	};
