@@ -48,20 +48,12 @@ const TableBody = (props) => {
 class Table extends Component {
 	render() {
 		//read props passed in from App.js
-<<<<<<< HEAD
 		const { filmsData, handleDelete } = this.props;
-=======
-		const { filmsData, filteredData } = this.props;
->>>>>>> 3b53e4f5bb3901f752f66deaa524ed0c9e0b0ce9
 
 		return (
 			<table>
 				<TableHeader />
-<<<<<<< HEAD
 				<TableBody data={filmsData} handleDelete={handleDelete} />
-=======
-				<TableBody data={filteredData.length > 0 ? filteredData : filmsData} />
->>>>>>> 3b53e4f5bb3901f752f66deaa524ed0c9e0b0ce9
 			</table>
 		);
 	}
