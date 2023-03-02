@@ -32,7 +32,7 @@ const TableBody = (props) => {
 				<td>
 					<button
 						onClick={() => {
-							props.handleDelete(index);
+							props.handleDelete(row.title);
 						}}
 					>
 						delete

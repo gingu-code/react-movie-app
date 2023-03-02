@@ -124,9 +124,9 @@ function App() {
 		handleFiltered();
 	}, [filmsData, searchInput, searchField]);
 
-	const handleDelete = (i) => {
-		const deleteMovie = filmsData.filter((m, index) => {
-			return i !== index;
+	const handleDelete = (title) => {
+		const deleteMovie = filmsData.filter((m) => {
+			return m.title !== title;
 		});
 		setFilmsData(deleteMovie);
 	};
