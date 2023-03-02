@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Table from "./Components/Table";
 import SearchBar from "./Components/SearchBar";
+import MovieForm from "./Components/MovieForm";
 
 function App() {
 	const movies = [
@@ -129,14 +130,21 @@ function App() {
 		});
 		setFilmsData(deleteMovie);
 	};
+	const handleNewMovie = (newMovie) => {
+		newMovie.actors = newMovie.actors.split(", ");
+		setFilmsData([...filmsData, newMovie]);
+	};
 
 	return (
 		<div className="App">
 			<SearchBar
+				searchInput={searchInput}
+				searchField={searchField}
 				setSearchInput={setSearchInput}
 				setSearchField={setSearchField}
 			/>
 			<Table filmsData={filteredData} handleDelete={handleDelete} />
+			<MovieForm handleNewMovie={handleNewMovie} />
 		</div>
 	);
 }
